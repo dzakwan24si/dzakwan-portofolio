@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saya | Mahasiswa PCR</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h2 class="logo">NamaKamu.</h2>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#experience">Pengalaman</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="container header-content">
+            <div class="text-area">
+                <h1>Halo, Saya <span class="highlight">Nama Lengkap</span></h1>
+                <p>Mahasiswa Sistem Informasi/Teknik Informatika di Politeknik Caltex Riau.</p>
+                <p>Tertarik pada Web Development & UI/UX Design.</p>
+                <a href="#contact" class="btn">Hubungi Saya</a>
+            </div>
+            <div class="image-area">
+                <img src="images/profile.jpg" alt="Foto Profil">
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>Tentang & Pendidikan</h2>
+            <div class="about-content">
+                <div class="edu-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Politeknik Caltex Riau</h3>
+                    <p>Semester 3 - [Nama Prodi Kamu]</p>
+                    <p>IPK Saat Ini: [Opsional]</p>
+                </div>
+                <div class="description">
+                    <p>Saya adalah mahasiswa yang antusias membangun solusi digital. Saat ini sedang fokus memperdalam [Sebutkan Skill]. Saya siap untuk kesempatan magang dan kolaborasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Proyek Terbaru</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <img src="images/project1.jpg" alt="Preview Project">
+                    <h3>Nama Project Coding</h3>
+                    <p>Deskripsi singkat project ini.</p>
+                    <a href="LINK_GITHUB_KAMU" target="_blank" class="btn-small"><i class="fab fa-github"></i> Lihat di GitHub</a>
+                </div>
+                <div class="card">
+                    <img src="images/project2.jpg" alt="Preview UI Design">
+                    <h3>Nama Project Desain</h3>
+                    <p>Studi kasus UI/UX aplikasi mobile.</p>
+                    <a href="LINK_BEHANCE_KAMU" target="_blank" class="btn-small"><i class="fab fa-behance"></i> Lihat di Behance</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Pengalaman & Lomba</h2>
+            <ul class="timeline">
+                <li>
+                    <h3>Juara 1 Lomba Web Design</h3>
+                    <p>Penyelenggara: Himpunan Mahasiswa PCR (Tahun)</p>
+                </li>
+                <li>
+                    <h3>Staff Divisi Kominfo</h3>
+                    <p>BEM Politeknik Caltex Riau (Periode)</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Galeri Kegiatan</h2>
+            <div class="gallery-grid">
+                <img src="images/foto1.jpg" alt="Kegiatan 1">
+                <img src="images/foto2.jpg" alt="Kegiatan 2">
+                <img src="images/foto3.jpg" alt="Kegiatan 3">
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h3>Ayo Terhubung!</h3>
+            <p>Temukan saya di sosial media berikut:</p>
+            <div class="social-icons">
+                <a href="LINK_LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="LINK_INSTAGRAM" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="LINK_GITHUB" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="LINK_BEHANCE" target="_blank"><i class="fab fa-behance"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Nama Kamu. Dibuat dengan ❤️ di Riau.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
