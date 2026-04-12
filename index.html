@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Saya | Mahasiswa PCR</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <title>M. Dzakwan Syafiq | Portfolio</title>
+
+    <!-- Google Fonts: Display + Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar">
+    <!-- ===================== CUSTOM CURSOR ===================== -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ===================== LOADING SCREEN ===================== -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-name">Dzakwan<span>.</span></div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">Portofolio<span class="dot">.</span></a>
-            
-            <ul class="nav-links">
+            <a href="#home" class="logo">dzk<span class="dot">.</span></a>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#projects">Proyek</a></li>
@@ -25,266 +40,574 @@
                 <li><a href="#gallery">Galeri</a></li>
                 <li><a href="#contact" class="btn-nav">Kontak</a></li>
             </ul>
-            
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
+    <!-- ===================== HERO SECTION ===================== -->
     <header id="home" class="hero">
+        <!-- Floating particles background -->
+        <canvas id="particleCanvas"></canvas>
+
         <div class="container hero-container">
             <div class="hero-text">
-                <span class="greeting">Halo, saya</span>
-                <h1>M. Dzakwan Syafiq</h1>
-                <p>Mahasiswa Politeknik Caltex Riau | Junior Web Developer, Data Analyst & UI/UX Enthusiast</p>
+                <div class="greeting-wrap">
+                    <span class="greeting-line"></span>
+                    <span class="greeting">Halo, saya</span>
+                </div>
+                <!-- Nama dengan efek glitch -->
+                <h1 class="hero-name" data-text="M. Dzakwan Syafiq">M. Dzakwan Syafiq</h1>
+                <!-- Typing animation -->
+                <p class="hero-subtitle">
+                    Mahasiswa PCR &mdash; 
+                    <span class="typing-text" id="typingText"></span><span class="typing-cursor">|</span>
+                </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Lihat Karya</a>
+                    <a href="#projects" class="btn btn-primary">Lihat Karya <i class="fas fa-arrow-right"></i></a>
                     <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
                 </div>
                 <div class="social-hero">
-                    <a href="https://www.github.com/dzakwan24si" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/m-dzakwan-syafiq" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.behance.net/mdzakwansyafiq" target="_blank"><i class="fab fa-behance"></i></a>
+                    <a href="https://www.github.com/dzakwan24si" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/m-dzakwan-syafiq" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.behance.net/mdzakwansyafiq" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="img-box">
-                    <img src="images/profile.jpg" alt="Foto Profil">
+
+            <!-- Foto dengan efek 3D Tilt -->
+            <div class="hero-image" id="heroImageWrap">
+                <div class="img-3d-scene">
+                    <div class="img-3d-card" id="img3dCard">
+                        <div class="img-box">
+                            <img src="images/profile.jpg" alt="Foto Profil M. Dzakwan Syafiq">
+                        </div>
+                        <!-- Overlay efek saat hover -->
+                        <div class="img-overlay">
+                            <span>Web Dev</span>
+                            <span>UI/UX</span>
+                            <span>Data Analyst</span>
+                        </div>
+                    </div>
+                    <!-- Dekoratif -->
+                    <div class="img-deco deco-ring"></div>
+                    <div class="img-deco deco-dot"></div>
                 </div>
             </div>
         </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
     </header>
 
+    <!-- ===================== RUNNING TEXT ===================== -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span>HTML &amp; CSS</span> <span class="sep">✦</span>
+                <span>JavaScript</span> <span class="sep">✦</span>
+                <span>PHP Laravel</span> <span class="sep">✦</span>
+                <span>MySQL</span> <span class="sep">✦</span>
+                <span>Figma</span> <span class="sep">✦</span>
+                <span>Git &amp; GitHub</span> <span class="sep">✦</span>
+                <span>UI/UX Design</span> <span class="sep">✦</span>
+                <span>Data Analysis</span> <span class="sep">✦</span>
+                <span>Bootstrap</span> <span class="sep">✦</span>
+                <span>CodeIgniter</span> <span class="sep">✦</span>
+                <span>CodeIgniter</span> <span class="sep">✦</span>
+                <span>React</span> <span class="sep">✦</span>
+                <span>Kotlin</span> <span class="sep">✦</span>
+                <span>Cisco</span> <span class="sep">✦</span>
+                <!-- Duplikat untuk loop mulus -->
+                <span>HTML &amp; CSS</span> <span class="sep">✦</span>
+                <span>JavaScript</span> <span class="sep">✦</span>
+                <span>PHP Laravel</span> <span class="sep">✦</span>
+                <span>MySQL</span> <span class="sep">✦</span>
+                <span>Figma</span> <span class="sep">✦</span>
+                <span>Git &amp; GitHub</span> <span class="sep">✦</span>
+                <span>UI/UX Design</span> <span class="sep">✦</span>
+                <span>Data Analysis</span> <span class="sep">✦</span>
+                <span>Bootstrap</span> <span class="sep">✦</span>
+                <span>CodeIgniter</span> <span class="sep">✦</span>
+                <span>React</span> <span class="sep">✦</span>
+                <span>Kotlin</span> <span class="sep">✦</span>
+                <span>Cisco</span> <span class="sep">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== ABOUT SECTION ===================== -->
     <section id="about" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Tentang Saya</h2>
+            <div class="section-label" data-aos="fade-up">Tentang Saya</div>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Siapa Saya?</h2>
+
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text" data-aos="fade-right" data-aos-delay="150">
                     <p>
-                        Saya adalah mahasiswa semester 3 di <strong>Politeknik Caltex Riau</strong>. 
+                        Saya adalah mahasiswa semester 4 di <strong>Politeknik Caltex Riau</strong>. 
                         Saya memiliki ketertarikan mendalam pada pengembangan website dan desain antarmuka. 
                         Saat ini saya sedang mencari kesempatan magang untuk menerapkan ilmu yang saya pelajari 
                         di perkuliahan ke dalam dunia industri nyata.
                     </p>
                     <div class="skills-box">
-                        <h3>Keahlian:</h3>
+                        <h3>Tech Stack:</h3>
                         <div class="tags">
-                            <span>HTML & CSS</span>
-                            <span>JavaScript</span>
-                            <span>PHP (Laravel)</span>
-                            <span>MySQL</span>
-                            <span>Figma</span>
-                            <span>Git & GitHub</span>
+                            <span class="tag-item" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-html5"></i> HTML & CSS</span>
+                            <span class="tag-item" data-aos="zoom-in" data-aos-delay="220"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tag-item" data-aos="zoom-in" data-aos-delay="240"><i class="fab fa-laravel"></i> PHP (Laravel)</span>
+                            <span class="tag-item" data-aos="zoom-in" data-aos-delay="240"><i class="fab fa-laravel"></i> Mobile Developer</span>
+                            <span class="tag-item" data-aos="zoom-in" data-aos-delay="260"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="tag-item" data-aos="zoom-in" data-aos-delay="280"><i class="fab fa-figma"></i> Figma</span>
+                            <span class="tag-item" data-aos="zoom-in" data-aos-delay="300"><i class="fab fa-git-alt"></i> Git & GitHub</span>
                         </div>
                     </div>
                 </div>
-                <div class="education-box">
+
+                <div class="education-box" data-aos="fade-left" data-aos-delay="150">
                     <h3><i class="fas fa-graduation-cap"></i> Riwayat Pendidikan</h3>
                     
                     <div class="edu-item">
                         <span class="time-badge">2024 - Sekarang</span>
                         <h4>POLITEKNIK CALTEX RIAU</h4>
-                        <p class="prodi">D4 Sistem Informasi - Semester 3</p>
+                        <p class="prodi">D4 Sistem Informasi — Semester 4</p>
                         <p class="desc">Aktif di kepanitian kampus dan fokus mendalami Backend (Laravel) & UI/UX.</p>
                     </div>
-                
                     <div class="divider"></div>
-                
                     <div class="edu-item">
                         <span class="time-badge">2023 (6 Bulan)</span>
-                        <h4>DINAS KOMUNIKASI INFORMATIKA DAN STATISTIK PROVINSI RIAU </h4>
+                        <h4>KOMINFOTIK PROVINSI RIAU</h4>
                         <p class="prodi"><i class="fas fa-briefcase"></i> Posisi: IT Support</p>
-                        <p class="desc">Magang/PKL semasa SMK. Berperan aktif dalam pemeliharaan infrastruktur jaringan kantor, memastikan konektivitas internal berjalan optimal..</p>
+                        <p class="desc">Magang semasa SMK. Pemeliharaan infrastruktur jaringan kantor dan memastikan konektivitas internal berjalan optimal.</p>
                     </div>
-                
                     <div class="divider"></div>
-                
                     <div class="edu-item">
                         <span class="time-badge">2021 - 2024</span>
                         <h4>SMK NEGERI 2 PEKANBARU</h4>
                         <p class="prodi">Teknik Komputer dan Jaringan</p>
-                        <p class="desc">Fokus pada manajemen jaringan komputer, perancangan infrastruktur IT, serta konfigurasi
-                            perangkat jaringan.</p>
+                        <p class="desc">Fokus pada manajemen jaringan komputer, perancangan infrastruktur IT, serta konfigurasi perangkat jaringan.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section-padding bg-light">
+    <!-- ===================== PROJECTS SECTION ===================== -->
+    <section id="projects" class="section-padding bg-alt">
         <div class="container">
-            <h2 class="section-title">Proyek Pilihan</h2>
+            <div class="section-label" data-aos="fade-up">Proyek</div>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Karya Pilihan</h2>
             <div class="projects-grid">
-    
-                <div class="project-card">
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-img">
                         <img src="images/new_inventaris.png" alt="Sistem Inventaris Desa">
+                        <div class="card-overlay">
+                            <a href="https://inventaris-admin.alwaysdata.net/dashboard" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/dzakwan24si/inventaris-admin.git" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> Source</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <h3>Sistem Informasi Inventaris & Aset Desa</h3>
-                        <p>
-                            Platform berbasis web untuk membantu perangkat desa mengelola aset dan inventaris secara digital.
-                            Fitur mencakup CRUD barang, laporan aset, dan manajemen stok otomatis.
-                        </p>
+                        <p>Platform web untuk membantu perangkat desa mengelola aset dan inventaris secara digital, dilengkapi CRUD, laporan, dan manajemen stok otomatis.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Laravel</span>
                             <span class="tech-tag">MySQL</span>
                             <span class="tech-tag">Bootstrap</span>
                         </div>
-                        <div class="card-links">
-                            <a href="https://github.com/dzakwan24si/inventaris-admin.git" target="_blank" class="link-icon"><i class="fab fa-github"></i> Source Code</a>
-                            <a href="https://inventaris-admin.alwaysdata.net/dashboard" target="_blank" class="link-icon"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
                     </div>
                 </div>
-            
-                <div class="project-card">
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-img">
                         <img src="images/Slide 1 (1).png" alt="Desain UI/UX TemanJasa">
+                        <div class="card-overlay">
+                            <a href="https://www.figma.com/design/OWPdQpK7rwwRf2u2jbAH73/Hire-Hub-Project?node-id=0-1&t=JY1md0zCANp7RcNn-1" target="_blank" class="overlay-btn"><i class="fab fa-figma"></i> Figma</a>
+                            <a href="https://www.behance.net/gallery/242249541/TemanJasa-Gig-Economy-App-for-Students-MSMEs?platform=direct" target="_blank" class="overlay-btn"><i class="fab fa-behance"></i> Case Study</a>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <h3>TemanJasa - Gig Economy App for Students MSMEs</h3>
-                        <p>
-                            Perancangan UI/UX aplikasi mobile yang menghubungkan pencari jasa dengan penyedia jasa profesional. 
-                            Fokus pada <i>User Journey</i> yang simpel dan sistem booking yang efisien.
-                        </p>
+                        <h3>TemanJasa — Gig Economy App for Students MSMEs</h3>
+                        <p>Perancangan UI/UX aplikasi mobile yang menghubungkan pencari jasa dengan penyedia jasa profesional, fokus pada user journey simpel dan sistem booking efisien.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Figma</span>
                             <span class="tech-tag">User Research</span>
                             <span class="tech-tag">Prototyping</span>
                         </div>
-                        <div class="card-links">
-                            <a href="https://www.figma.com/design/OWPdQpK7rwwRf2u2jbAH73/Hire-Hub-Project?node-id=0-1&t=JY1md0zCANp7RcNn-1" target="_blank" class="link-icon"><i class="fab fa-figma"></i> Preview Figma</a>
-                            <a href="https://www.behance.net/gallery/242249541/TemanJasa-Gig-Economy-App-for-Students-MSMEs?platform=direct" target="_blank" class="link-icon"><i class="fab fa-behance"></i> Case Study</a>
-                        </div>
                     </div>
                 </div>
-            
-                <div class="project-card">
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-img">
                         <img src="images/LPKasir.png" alt="Sistem Transaksi Penjualan">
+                        <div class="card-overlay">
+                            <a href="https://github.com/dzakwan24si/Lappo-Inventory.git" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <h3>Sistem Informasi Transaksi Penjualan</h3>
-                        <p>
-                            Aplikasi Point of Sales (POS) untuk mencatat transaksi penjualan secara <i>real-time</i>.
-                            Dilengkapi fitur rekapitulasi penjualan harian, manajemen kasir, dan cetak struk.
-                        </p>
+                        <p>Aplikasi Point of Sales (POS) untuk mencatat transaksi real-time. Dilengkapi rekapitulasi harian, manajemen kasir, dan cetak struk.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">HTML/PHP</span>
                             <span class="tech-tag">MySQL</span>
                             <span class="tech-tag">CodeIgniter</span>
                         </div>
-                        <div class="card-links">
-                            <a href="https://github.com/dzakwan24si/Lappo-Inventory.git" target="_blank" class="link-icon"><i class="fab fa-github"></i> Source Code</a>
-                        </div>
                     </div>
                 </div>
-            
+
             </div>
         </div>
     </section>
 
+    <!-- ===================== EXPERIENCE SECTION ===================== -->
     <section id="experience" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Pengalaman & Prestasi</h2>
+            <div class="section-label" data-aos="fade-up">Rekam Jejak</div>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Pengalaman & Prestasi</h2>
+
             <div class="timeline">
-    
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="date">Okt 2025</span>
-                        <h3>Wisuda PCR 2025 – Divisi Bagian Administrasi Akademik (BAAK)</h3>
+                        <h3>Wisuda PCR 2025 — Divisi BAAK</h3>
                         <p>Mengelola data administrasi wisudawan dan koordinasi dengan pihak akademik.</p>
                     </div>
                 </div>
-            
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="150">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="date">Okt 2025</span>
-                        <h3>Head Volunteer - Bimbingan Teknis Bersama Badan Gizi Nasional</h3>
+                        <h3>Head Volunteer — Bimbingan Teknis Badan Gizi Nasional</h3>
                         <p>Memimpin tim volunteer dalam pelaksanaan kegiatan nasional di wilayah Riau.</p>
                     </div>
                 </div>
-            
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="date">Agustus 2025</span>
-                        <h3>Informative Study Orientation (ISO) 2025 – Divisi Tugas</h3>
-                        <p>Bertanggung jawab menyusun, membagikan, serta memonitor tugas-tugas yang diberikan kepada mahasiswa baru.</p>
+                        <h3>ISO 2025 — Divisi Tugas</h3>
+                        <p>Bertanggung jawab menyusun, membagikan, serta memonitor tugas-tugas untuk mahasiswa baru.</p>
                     </div>
                 </div>
-            
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="250">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="date">Maret - Oktober 2025</span>
+                        <span class="date">Mar – Okt 2025</span>
                         <h3>Tim Sumatera Career Center (SCC)</h3>
                         <p>Membantu pelaksanaan event yang menjembatani mahasiswa dengan dunia kerja.</p>
                     </div>
                 </div>
-            
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="date">Januari - Februari 2025</span>
-                        <h3>Goes To School – Anggota Pekanbaru</h3>
-                        <p>Terlibat dalam perencanaan dan pelaksanaan sosialisasi ke sekolah-sekolah di wilayah Pekanbaru.</p>
+                        <span class="date">Jan – Feb 2025</span>
+                        <h3>Goes To School — Anggota Pekanbaru</h3>
+                        <p>Terlibat dalam perencanaan dan sosialisasi ke sekolah-sekolah di wilayah Pekanbaru.</p>
                     </div>
                 </div>
-            
-                <div class="timeline-item">
+                <div class="timeline-item highlight" data-aos="fade-right" data-aos-delay="350">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="date">Desember 2024</span>
-                        <h3>Silver Medal dan Best Video – GINECO 2024</h3>
+                        <h3>🥈 Silver Medal & Best Video — GINECO 2024</h3>
                         <p>Berhasil meraih medali perak dan penghargaan Best Video dalam kompetisi nasional GINECO 2024.</p>
                     </div>
                 </div>
-            
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="section-padding bg-light">
+    <!-- ===================== GALLERY SECTION ===================== -->
+    <section id="gallery" class="section-padding bg-alt">
         <div class="container">
-            <h2 class="section-title">Galeri Kegiatan</h2>
+            <div class="section-label" data-aos="fade-up">Momen</div>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Galeri Kegiatan</h2>
             <div class="gallery-grid">
-                <img src="images/galeri1.jpg" alt="Kegiatan 1">
-                <img src="images/galeri2.jpg" alt="Kegiatan 2">
-                <img src="images/galeri3.jpg" alt="Kegiatan 3">
-                <img src="images/IMG_6499.jpg" alt="Kegiatan 4">
-                <img src="images/galeri5.jpg" alt="Kegiatan 5">
-                <img src="images/galeri6.jpg" alt="Kegiatan 6">
-                <img src="images/galeri7.jpg" alt="Kegiatan 7">
-                <img src="images/galeri8.jpg" alt="Kegiatan 8">
-                <img src="images/galeri9.jpg" alt="Kegiatan 9">
+                <img src="images/galeri1.jpg" alt="Kegiatan 1" data-aos="zoom-in" data-aos-delay="50">
+                <img src="images/galeri2.jpg" alt="Kegiatan 2" data-aos="zoom-in" data-aos-delay="100">
+                <img src="images/galeri3.jpg" alt="Kegiatan 3" data-aos="zoom-in" data-aos-delay="150">
+                <img src="images/IMG_6499.jpg" alt="Kegiatan 4" data-aos="zoom-in" data-aos-delay="200">
+                <img src="images/galeri5.jpg" alt="Kegiatan 5" data-aos="zoom-in" data-aos-delay="250">
+                <img src="images/galeri6.jpg" alt="Kegiatan 6" data-aos="zoom-in" data-aos-delay="300">
+                <img src="images/galeri7.jpg" alt="Kegiatan 7" data-aos="zoom-in" data-aos-delay="350">
+                <img src="images/galeri8.jpg" alt="Kegiatan 8" data-aos="zoom-in" data-aos-delay="400">
+                <img src="images/galeri9.jpg" alt="Kegiatan 9" data-aos="zoom-in" data-aos-delay="450">
             </div>
         </div>
     </section>
 
+    <!-- ===================== FOOTER / CONTACT ===================== -->
     <footer id="contact">
+        <div class="footer-glow"></div>
         <div class="container footer-content">
-            <h2>Mari Bekerja Sama!</h2>
-            <p>Tertarik merekrut saya untuk magang atau kolaborasi proyek? Jangan ragu untuk menghubungi.</p>
+            <div class="footer-eyebrow" data-aos="fade-up">Mari berkolaborasi</div>
+            <h2 data-aos="fade-up" data-aos-delay="100">Mari Bekerja Sama!</h2>
+            <p data-aos="fade-up" data-aos-delay="150">Tertarik merekrut saya untuk magang atau kolaborasi proyek?<br>Jangan ragu untuk menghubungi.</p>
             
-            <div class="social-big">
-                <a href="https://linkedin.com/in/m-dzakwan-syafiq" class="soc-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-                <a href="https://instagram.com/syafiqdzakwan" class="soc-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
+            <div class="social-big" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://linkedin.com/in/m-dzakwan-syafiq" class="soc-btn linkedin" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                <a href="https://instagram.com/syafiqdzakwan" class="soc-btn instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
                 <a href="mailto:mdzakwansyafiq29@gmail.com" class="soc-btn email"><i class="fas fa-envelope"></i> Email</a>
             </div>
 
             <div class="copyright">
-                <p>&copy; 2025 Dibuat dengan html oleh <strong>M. Dzakwan Syafiq</strong>.</p>
+                <p>&copy; 2026 Dibuat dengan <span class="heart">♥</span> oleh <strong>M. Dzakwan Syafiq</strong></p>
             </div>
         </div>
     </footer>
 
+    <!-- ===================== SCRIPTS ===================== -->
+    <!-- AOS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
     <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+    // ==========================================
+    // 1. LOADING SCREEN
+    // ==========================================
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+            loader.classList.add('hide');
+            setTimeout(() => { loader.style.display = 'none'; }, 600);
+        }, 1800);
+    });
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+    // ==========================================
+    // 2. AOS INIT (Animasi Scroll)
+    // ==========================================
+    AOS.init({
+        duration: 700,
+        easing: 'ease-out-quart',
+        once: true,
+        offset: 80
+    });
+
+    // ==========================================
+    // 3. CUSTOM CURSOR
+    // ==========================================
+    const dot   = document.getElementById('cursorDot');
+    const ring  = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0;
+    let ringX  = 0, ringY  = 0;
+
+    document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    });
+
+    // Ring mengikuti dengan delay (lerp)
+    function animateRing() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+        requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Cursor membesar saat hover elemen interaktif
+    const interactives = document.querySelectorAll('a, button, .project-card, .tag-item, .gallery-grid img');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            ring.classList.add('cursor-grow');
+            dot.classList.add('dot-hide');
         });
-    </script>
+        el.addEventListener('mouseleave', () => {
+            ring.classList.remove('cursor-grow');
+            dot.classList.remove('dot-hide');
+        });
+    });
 
+    // Cursor khusus saat hover foto profil
+    const imgWrap = document.getElementById('heroImageWrap');
+    if (imgWrap) {
+        imgWrap.addEventListener('mouseenter', () => ring.classList.add('cursor-photo'));
+        imgWrap.addEventListener('mouseleave', () => ring.classList.remove('cursor-photo'));
+    }
+
+    // ==========================================
+    // 4. FOTO 3D TILT EFFECT
+    // ==========================================
+    const card3d = document.getElementById('img3dCard');
+    const scene   = card3d ? card3d.parentElement : null;
+
+    if (scene) {
+        scene.addEventListener('mousemove', e => {
+            const rect   = scene.getBoundingClientRect();
+            const x      = e.clientX - rect.left;
+            const y      = e.clientY - rect.top;
+            const cx     = rect.width  / 2;
+            const cy     = rect.height / 2;
+            const rotY   =  ((x - cx) / cx) * 15; // max 15deg
+            const rotX   = -((y - cy) / cy) * 15;
+
+            card3d.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.04)`;
+        });
+        scene.addEventListener('mouseleave', () => {
+            card3d.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+    }
+
+    // ==========================================
+    // 5. TYPING ANIMATION
+    // ==========================================
+    const phrases = [
+        'Junior Web Developer',
+        'UI/UX Enthusiast',
+        'Data Analyst',
+        'Software Engineer',
+        'Android Developer',
+        'Figma Designer'
+    ];
+    let phraseIdx = 0, charIdx = 0, deleting = false;
+    const typingEl = document.getElementById('typingText');
+
+    function typeLoop() {
+        if (!typingEl) return;
+        const current = phrases[phraseIdx];
+        if (!deleting) {
+            typingEl.textContent = current.slice(0, charIdx + 1);
+            charIdx++;
+            if (charIdx === current.length) {
+                deleting = true;
+                setTimeout(typeLoop, 1800);
+                return;
+            }
+        } else {
+            typingEl.textContent = current.slice(0, charIdx - 1);
+            charIdx--;
+            if (charIdx === 0) {
+                deleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+            }
+        }
+        setTimeout(typeLoop, deleting ? 60 : 100);
+    }
+    typeLoop();
+
+    // ==========================================
+    // 6. PARTICLE CANVAS BACKGROUND
+    // ==========================================
+    const canvas = document.getElementById('particleCanvas');
+    const ctx    = canvas ? canvas.getContext('2d') : null;
+
+    if (ctx) {
+        let particles = [];
+        const PARTICLE_COUNT = 55;
+
+        function resizeCanvas() {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push({
+                x:    Math.random() * canvas.width,
+                y:    Math.random() * canvas.height,
+                r:    Math.random() * 2 + 0.5,
+                dx:   (Math.random() - 0.5) * 0.4,
+                dy:   (Math.random() - 0.5) * 0.4,
+                alpha: Math.random() * 0.5 + 0.1
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isDark = document.body.classList.contains('dark');
+            const color  = isDark ? '255,255,255' : '37,99,235';
+
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${color},${p.alpha})`;
+                ctx.fill();
+
+                p.x += p.dx;
+                p.y += p.dy;
+
+                if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
+                if (p.y < 0 || p.y > canvas.height)  p.dy *= -1;
+            });
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+    }
+
+    // ==========================================
+    // 7. NAVBAR SCROLL STYLE
+    // ==========================================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ==========================================
+    // 8. HAMBURGER MENU
+    // ==========================================
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks   = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('open');
+    });
+
+    // Tutup menu saat klik link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('open');
+        });
+    });
+
+    // ==========================================
+    // 9. DARK MODE TOGGLE
+    // ==========================================
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon   = document.getElementById('themeIcon');
+
+    // Cek preferensi tersimpan
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+        themeIcon.className = 'fas fa-sun';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        const isDark = document.body.classList.contains('dark');
+        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // ==========================================
+    // 10. ACTIVE NAVBAR LINK ON SCROLL
+    // ==========================================
+    const sections = document.querySelectorAll('section[id], header[id], footer[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navAnchors.forEach(a => {
+                    a.classList.remove('active-link');
+                    if (a.getAttribute('href') === `#${entry.target.id}`) {
+                        a.classList.add('active-link');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+    </script>
 </body>
 </html>
