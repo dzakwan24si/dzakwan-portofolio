@@ -2,7 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FIX: maximum-scale=1 mencegah auto-zoom yang bikin tampilan geser di mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
     <title>M. Dzakwan Syafiq | Portfolio</title>
 
     <!-- Google Fonts: Display + Body -->
@@ -31,7 +32,7 @@
     <!-- ===================== NAVBAR ===================== -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#home" class="logo">dzk<span class="dot">.</span></a>
+            <a href="#home" class="logo">dz<span class="dot">.</span></a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Tentang</a></li>
@@ -120,10 +121,6 @@
                 <span>Data Analysis</span> <span class="sep">✦</span>
                 <span>Bootstrap</span> <span class="sep">✦</span>
                 <span>CodeIgniter</span> <span class="sep">✦</span>
-                <span>CodeIgniter</span> <span class="sep">✦</span>
-                <span>React</span> <span class="sep">✦</span>
-                <span>Kotlin</span> <span class="sep">✦</span>
-                <span>Cisco</span> <span class="sep">✦</span>
                 <!-- Duplikat untuk loop mulus -->
                 <span>HTML &amp; CSS</span> <span class="sep">✦</span>
                 <span>JavaScript</span> <span class="sep">✦</span>
@@ -135,9 +132,6 @@
                 <span>Data Analysis</span> <span class="sep">✦</span>
                 <span>Bootstrap</span> <span class="sep">✦</span>
                 <span>CodeIgniter</span> <span class="sep">✦</span>
-                <span>React</span> <span class="sep">✦</span>
-                <span>Kotlin</span> <span class="sep">✦</span>
-                <span>Cisco</span> <span class="sep">✦</span>
             </div>
         </div>
     </div>
@@ -151,7 +145,7 @@
             <div class="about-content">
                 <div class="about-text" data-aos="fade-right" data-aos-delay="150">
                     <p>
-                        Saya adalah mahasiswa semester 4 di <strong>Politeknik Caltex Riau</strong>. 
+                        Saya adalah mahasiswa semester 3 di <strong>Politeknik Caltex Riau</strong>. 
                         Saya memiliki ketertarikan mendalam pada pengembangan website dan desain antarmuka. 
                         Saat ini saya sedang mencari kesempatan magang untuk menerapkan ilmu yang saya pelajari 
                         di perkuliahan ke dalam dunia industri nyata.
@@ -162,7 +156,6 @@
                             <span class="tag-item" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-html5"></i> HTML & CSS</span>
                             <span class="tag-item" data-aos="zoom-in" data-aos-delay="220"><i class="fab fa-js"></i> JavaScript</span>
                             <span class="tag-item" data-aos="zoom-in" data-aos-delay="240"><i class="fab fa-laravel"></i> PHP (Laravel)</span>
-                            <span class="tag-item" data-aos="zoom-in" data-aos-delay="240"><i class="fab fa-laravel"></i> Mobile Developer</span>
                             <span class="tag-item" data-aos="zoom-in" data-aos-delay="260"><i class="fas fa-database"></i> MySQL</span>
                             <span class="tag-item" data-aos="zoom-in" data-aos-delay="280"><i class="fab fa-figma"></i> Figma</span>
                             <span class="tag-item" data-aos="zoom-in" data-aos-delay="300"><i class="fab fa-git-alt"></i> Git & GitHub</span>
@@ -176,7 +169,7 @@
                     <div class="edu-item">
                         <span class="time-badge">2024 - Sekarang</span>
                         <h4>POLITEKNIK CALTEX RIAU</h4>
-                        <p class="prodi">D4 Sistem Informasi — Semester 4</p>
+                        <p class="prodi">D4 Sistem Informasi — Semester 3</p>
                         <p class="desc">Aktif di kepanitian kampus dan fokus mendalami Backend (Laravel) & UI/UX.</p>
                     </div>
                     <div class="divider"></div>
@@ -358,7 +351,7 @@
             </div>
 
             <div class="copyright">
-                <p>&copy; 2026 Dibuat dengan <span class="heart">♥</span> oleh <strong>M. Dzakwan Syafiq</strong></p>
+                <p>&copy; 2025 Dibuat dengan <span class="heart">♥</span> oleh <strong>M. Dzakwan Syafiq</strong></p>
             </div>
         </div>
     </footer>
@@ -462,8 +455,7 @@
         'Junior Web Developer',
         'UI/UX Enthusiast',
         'Data Analyst',
-        'Software Engineer',
-        'Android Developer',
+        'Laravel Developer',
         'Figma Designer'
     ];
     let phraseIdx = 0, charIdx = 0, deleting = false;
@@ -503,7 +495,9 @@
         const PARTICLE_COUNT = 55;
 
         function resizeCanvas() {
-            canvas.width  = window.innerWidth;
+            // FIX: pakai document.documentElement.clientWidth bukan window.innerWidth
+            // agar canvas tidak lebih lebar dari viewport yang terlihat
+            canvas.width  = document.documentElement.clientWidth;
             canvas.height = window.innerHeight;
         }
         resizeCanvas();
