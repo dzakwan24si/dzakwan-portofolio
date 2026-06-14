@@ -32,7 +32,7 @@
     <!-- ===================== NAVBAR ===================== -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#home" class="logo">dzk<span class="dot">.</span></a>
+            <a href="#home" class="logo">dz<span class="dot">.</span></a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Tentang</a></li>
@@ -141,8 +141,9 @@
         <div class="container">
             <div class="section-label" data-aos="fade-up">Tentang Saya</div>
             <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Siapa Saya?</h2>
-
+    
             <div class="about-content">
+                <!-- Bagian Kiri: Tentang & Tech Stack -->
                 <div class="about-text" data-aos="fade-right" data-aos-delay="150">
                     <p>
                         Saya adalah mahasiswa semester 4 di <strong>Politeknik Caltex Riau</strong>. 
@@ -162,35 +163,48 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="education-box" data-aos="fade-left" data-aos-delay="150">
-                    <h3><i class="fas fa-graduation-cap"></i> Riwayat Pendidikan</h3>
-                    
-                    <div class="edu-item">
-                        <span class="time-badge">2024 - Sekarang</span>
-                        <h4>POLITEKNIK CALTEX RIAU</h4>
-                        <p class="prodi">D4 Sistem Informasi — Semester 3</p>
-                        <p class="desc">Aktif di kepanitian kampus dan fokus mendalami Backend (Laravel) & UI/UX.</p>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="edu-item">
-                        <span class="time-badge">2023 (6 Bulan)</span>
-                        <h4>KOMINFOTIK PROVINSI RIAU</h4>
-                        <p class="prodi"><i class="fas fa-briefcase"></i> Posisi: IT Support</p>
-                        <p class="desc">Magang semasa SMK. Pemeliharaan infrastruktur jaringan kantor dan memastikan konektivitas internal berjalan optimal.</p>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="edu-item">
-                        <span class="time-badge">2021 - 2024</span>
-                        <h4>SMK NEGERI 2 PEKANBARU</h4>
-                        <p class="prodi">Teknik Komputer dan Jaringan</p>
-                        <p class="desc">Fokus pada manajemen jaringan komputer, perancangan infrastruktur IT, serta konfigurasi perangkat jaringan.</p>
+    
+                <!-- Bagian Kanan: Timeline Pendidikan & Pengalaman -->
+                <div class="timeline-box" data-aos="fade-left" data-aos-delay="150">
+                    <h3><i class="fas fa-graduation-cap"></i> Riwayat & Pengalaman</h3>
+                    <div class="timeline">
+                        <!-- Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="time-badge">2024 - Sekarang</span>
+                                <h4>POLITEKNIK CALTEX RIAU</h4>
+                                <p class="prodi">D4 Sistem Informasi — Semester 3</p>
+                                <p class="desc">Aktif di kepanitiaan kampus dan fokus mendalami Backend (Laravel) & UI/UX.</p>
+                            </div>
+                        </div>
+    
+                        <!-- Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="time-badge">2023 (6 Bulan)</span>
+                                <h4>KOMINFOTIK PROVINSI RIAU</h4>
+                                <p class="prodi"><i class="fas fa-briefcase"></i> Posisi: IT Support</p>
+                                <p class="desc">Magang semasa SMK. Pemeliharaan infrastruktur jaringan kantor dan memastikan konektivitas internal berjalan optimal.</p>
+                            </div>
+                        </div>
+    
+                        <!-- Item 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="time-badge">2021 - 2024</span>
+                                <h4>SMK NEGERI 2 PEKANBARU</h4>
+                                <p class="prodi">Teknik Komputer dan Jaringan</p>
+                                <p class="desc">Fokus pada manajemen jaringan komputer, perancangan infrastruktur IT, serta konfigurasi perangkat jaringan.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- ===================== PROJECTS SECTION ===================== -->
     <section id="projects" class="section-padding bg-alt">
         <div class="container">
@@ -202,7 +216,7 @@
                     <div class="card-img">
                         <img src="images/new_inventaris.png" alt="Sistem Inventaris Desa">
                         <div class="card-overlay">
-                            <a href="https://dzakwan-dev.alwaysdata.net/inventaris-admin" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://inventaris-admin.alwaysdata.net/dashboard" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                             <a href="https://github.com/dzakwan24si/inventaris-admin.git" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> Source</a>
                         </div>
                     </div>
@@ -254,6 +268,42 @@
                     </div>
                 </div>
 
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-img">
+                        <img src="images/kucekin-preview.png" alt="Kucekin Laundry CRM">
+                        <div class="card-overlay">
+                            <a href="https://kucekin-laundry.vercel.app" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/dzakwan24si/dzakwan-success.git" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Kucekin — Modern Laundry & CRM System <span style="font-size: 0.8em; color: #f97316;">(Ongoing)</span></h3>
+                        <p>Platform layanan laundry yang menerapkan sistem Customer Relationship Management (CRM). Memiliki fitur kalkulasi pesanan otomatis, pelacakan status mandiri, dan dasbor analitik bisnis.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Framer Motion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-img">
+                        <img src="images/portal-audio-preview.png" alt="Portal Audio Riset XAI">
+                        <div class="card-overlay">
+                            <a href="https://portal-audio.free.je" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Portal Audio Riset XAI <span style="font-size: 0.8em; color: #f97316;">(Ongoing)</span></h3>
+                        <p>Sistem web dinamis untuk pengumpulan data rekaman suara. Dirancang khusus untuk keperluan eksperimen pemodelan kelelahan emosional (fatigue) berbasis Deep Audio Learning.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -351,7 +401,7 @@
             </div>
 
             <div class="copyright">
-                <p>&copy; 2025 Dibuat dengan <span class="heart">♥</span> oleh <strong>M. Dzakwan Syafiq</strong></p>
+                <p>&copy; 2026 Dibuat dengan <span class="heart">♥</span> oleh <strong>M. Dzakwan Syafiq</strong></p>
             </div>
         </div>
     </footer>
@@ -364,13 +414,32 @@
     // ==========================================
     // 1. LOADING SCREEN
     // ==========================================
-    window.addEventListener('load', () => {
+    (function() {
         const loader = document.getElementById('loader');
-        setTimeout(() => {
+
+        function hideLoader() {
+            if (!loader || loader.dataset.hidden) return;
+            loader.dataset.hidden = 'true'; // cegah dipanggil dua kali
             loader.classList.add('hide');
-            setTimeout(() => { loader.style.display = 'none'; }, 600);
-        }, 1800);
-    });
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 650);
+        }
+
+        // Timer utama: sesuai durasi animasi bar CSS (1.6s) + sedikit buffer
+        const mainTimer = setTimeout(hideLoader, 2000);
+
+        // Fallback safety: kalau lewat 4 detik belum hilang juga, paksa hilang
+        // Ini mengatasi kasus koneksi lambat / gambar tidak load
+        const safetyTimer = setTimeout(hideLoader, 4000);
+
+        // Kalau page sudah load lebih cepat dari 2 detik, tetap tunggu 2 detik
+        // supaya animasi bar selesai dulu
+        window.addEventListener('load', () => {
+            clearTimeout(safetyTimer); // batalkan safety timer jika load berhasil
+            // mainTimer tetap jalan agar animasi bar selesai
+        });
+    })();
 
     // ==========================================
     // 2. AOS INIT (Animasi Scroll)

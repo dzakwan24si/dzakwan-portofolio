@@ -192,7 +192,8 @@ img { width: 100%; display: block; }
     width: 0;
     background: var(--primary);
     border-radius: 99px;
-    animation: loadFill 1.6s var(--ease) forwards;
+    /* Sync dengan JS timer: bar selesai di 1.8s, loader hilang di 2.0s */
+    animation: loadFill 1.8s var(--ease) forwards;
 }
 
 @keyframes loadFill {
@@ -916,6 +917,7 @@ img { width: 100%; display: block; }
     padding-left: 36px;
     max-width: 700px;
     margin: 0 auto;
+    margin-top: 2rem;
 }
 
 /* Garis vertikal */
@@ -1336,3 +1338,4 @@ body.dark .loader-bar  { background: #1e293b; }
 section, header, footer {
     transition: background 0.4s ease;
 }
+
