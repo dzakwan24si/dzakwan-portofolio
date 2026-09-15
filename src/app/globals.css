@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0A192F;
+  --color-navy-light: #112240;
+  --color-beige: #E8DCC4;
+  --color-beige-dark: #C3B59B;
+
+  --font-sans: var(--font-poppins), sans-serif;
+  --font-display: var(--font-space-grotesk), sans-serif;
+
+  --color-card-bg: #1a1a24;
+  --color-card-hover: #252536;
+}
+
+html.light {
+  --color-navy: #E8DCC4;
+  --color-beige: #0A192F;
+  --color-navy-light: #C3B59B;
+  --color-beige-dark: #112240;
+  
+  --color-card-bg: #d3c4a6;
+  --color-card-hover: #c4b391;
+}
+
+body {
+  background-color: var(--color-navy);
+  color: var(--color-beige);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+a, button, input, textarea, select {
+  cursor: none;
+}
+
+@utility text-outline {
+  -webkit-text-stroke: 1px var(--color-beige);
+  color: transparent;
+}
+
+@utility text-outline-hover {
+  &:hover {
+    -webkit-text-stroke: 1px transparent;
+    color: var(--color-beige);
+  }
+}
