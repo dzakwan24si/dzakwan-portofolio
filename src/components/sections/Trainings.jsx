@@ -5,12 +5,11 @@ import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi";
 import { useLanguage } from "@/context/LanguageContext";
 
-export default function Trainings() {
+export default function Trainings({ experiences = [] }) {
   const { lang } = useLanguage();
   const currentData = mockData[lang];
-  const { trainings } = currentData;
 
-  if (!trainings || trainings.length === 0) return null;
+  if (!experiences || experiences.length === 0) return null;
 
   return (
     <section className="relative py-24 px-6 md:px-12 max-w-[1200px] mx-auto w-full overflow-hidden" id="trainings">
@@ -38,7 +37,7 @@ export default function Trainings() {
 
         {/* Trainings List */}
         <div className="flex flex-col gap-24">
-          {trainings.slice(0, 3).map((item, index) => (
+          {experiences.slice(0, 3).map((item, index) => (
             <div key={item.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               
               {/* Left Column: Text Content */}
@@ -51,10 +50,10 @@ export default function Trainings() {
               >
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-2 gap-2">
                   <h3 className="text-2xl md:text-3xl font-display font-bold text-beige">
-                    {item.title}
+                    {lang === 'ID' ? item.title_id : item.title_en}
                   </h3>
                   <span className="text-beige-dark text-xs md:text-sm font-mono opacity-80">
-                    {item.date}
+                    {lang === 'ID' ? item.date_id : item.date_en}
                   </span>
                 </div>
                 
@@ -63,7 +62,7 @@ export default function Trainings() {
                 </h4>
                 
                 <p className="text-beige-dark text-sm md:text-base leading-relaxed mb-8 max-w-xl">
-                  {item.description}
+                  {lang === 'ID' ? item.description_id : item.description_en}
                 </p>
 
                 <div className="flex flex-col gap-4">
@@ -93,8 +92,8 @@ export default function Trainings() {
                 
                 <div className="relative w-full aspect-[4/3] rounded-2xl md:rounded-[2rem] overflow-hidden border border-beige/10 shadow-2xl hover:rotate-0 hover:scale-[1.02] transition-all duration-500 cursor-pointer">
                   <Image 
-                    src={item.image}
-                    alt={item.title}
+                    src={item.image_url || "/images/galeri2.jpg"}
+                    alt={lang === 'ID' ? item.title_id : item.title_en}
                     fill
                     className="object-cover"
                   />
@@ -108,7 +107,7 @@ export default function Trainings() {
         </div>
 
         {/* View All Button */}
-        {trainings.length > 3 && (
+        {experiences.length > 3 && (
           <div className="mt-20 flex justify-center">
             <a 
               href="/experience"

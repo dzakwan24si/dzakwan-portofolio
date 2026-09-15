@@ -7,8 +7,24 @@ import About from "@/components/sections/About";
 import Awards from "@/components/sections/Awards";
 import Trainings from "@/components/sections/Trainings";
 import Footer from "@/components/sections/Footer";
+import { createClient } from "@/utils/supabase/server";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  
+  // Fetch data concurrently
+  const [
+    { data: projects },
+    { data: experiences },
+    { data: awards },
+    { data: gallery }
+  ] = await Promise.all([
+    supabase.from('projects').select('*').order('id', { ascending: true }),
+    supabase.from('experiences').select('*').order('id', { ascending: true }),
+    supabase.from('awards').select('*').order('id', { ascending: true }),
+    supabase.from('gallery').select('*').order('id', { ascending: true })
+  ]);
+
   return (
     <main className="relative w-full min-h-screen overflow-hidden">
       {/* Custom Mouse Cursor */}
@@ -19,11 +35,11 @@ export default function Home() {
 
       {/* Page Sections */}
       <Hero />
-      <WorkGallery />
+      <WorkGallery projects={projects || []} />
       <Skills />
       <About />
-      <Awards />
-      <Trainings />
+      <Awards awards={awards || []} gallery={gallery || []} />
+      <Trainings experiences={experiences || []} />
       <Footer />
     </main>
   );

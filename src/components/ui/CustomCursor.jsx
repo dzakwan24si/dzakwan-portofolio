@@ -1,12 +1,21 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith("/admin");
 
   useEffect(() => {
+    if (!isAdmin) {
+      document.body.classList.add("hide-cursor");
+    } else {
+      document.body.classList.remove("hide-cursor");
+    }
+
     const handleMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
@@ -33,7 +42,11 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, []);
+  }, [isAdmin]);
+
+  if (isAdmin) {
+    return null;
+  }
 
   return (
     <motion.div

@@ -6,10 +6,12 @@ import Image from "next/image";
 import { FiExternalLink, FiArrowRight } from "react-icons/fi";
 import { useLanguage } from "@/context/LanguageContext";
 
-export default function WorkGallery() {
+export default function WorkGallery({ projects = [] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const { lang } = useLanguage();
   const currentData = mockData[lang];
+
+  if (!projects || projects.length === 0) return null;
 
   return (
     <section className="relative py-32 px-6 md:px-12 w-full overflow-hidden" id="work">
@@ -50,7 +52,7 @@ export default function WorkGallery() {
 
         {/* 3D Coverflow Carousel */}
         <div className="relative h-[200px] md:h-[320px] w-full flex items-center justify-center mb-16" style={{ perspective: "1000px" }}>
-          {currentData.projects.map((project, index) => {
+          {projects.map((project, index) => {
             const offset = index - activeIndex;
             const isActive = offset === 0;
             
@@ -74,8 +76,8 @@ export default function WorkGallery() {
                 }`}
               >
                 <Image 
-                  src={project.image} 
-                  alt={project.title}
+                  src={project.image_url} 
+                  alt={lang === 'ID' ? project.title_id : project.title_en}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
@@ -97,10 +99,10 @@ export default function WorkGallery() {
               className="flex flex-col items-center"
             >
               <h3 className="text-2xl md:text-4xl font-display font-bold text-beige mb-4 leading-tight">
-                {currentData.projects[activeIndex].title}
+                {lang === 'ID' ? projects[activeIndex].title_id : projects[activeIndex].title_en}
               </h3>
               <p className="text-beige-dark text-sm md:text-base mb-8 leading-relaxed">
-                {currentData.projects[activeIndex].description}
+                {lang === 'ID' ? projects[activeIndex].description_id : projects[activeIndex].description_en}
               </p>
               <a href="/projects" className="inline-flex items-center gap-2 text-beige font-bold hover:text-white transition-colors hover-trigger group">
                 {currentData.general.viewProject}
