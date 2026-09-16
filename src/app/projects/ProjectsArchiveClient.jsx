@@ -1,24 +1,40 @@
 "use client";
-import { FiExternalLink } from "react-icons/fi";
+import { FiExternalLink, FiCode } from "react-icons/fi";
 import { useLanguage } from "@/context/LanguageContext";
 import { 
-  SiHtml5, SiCss, SiJavascript, SiReact, 
+  SiHtml5, SiCss3, SiJavascript, SiReact, 
   SiTailwindcss, SiPhp, SiLaravel, SiMysql, 
-  SiFigma, SiGithub, SiPython
+  SiFigma, SiGithub, SiPython, SiBehance,
+  SiTensorflow, SiKeras, SiJupyter, SiOpenai,
+  SiNextdotjs, SiNodedotjs, SiVercel, SiSupabase,
+  SiPostgresql, SiTypescript
 } from "react-icons/si";
 
 const iconMap = {
   html5: { icon: SiHtml5, color: "text-[#E34F26]" },
-  css3: { icon: SiCss, color: "text-[#1572B6]" },
+  css3: { icon: SiCss3, color: "text-[#1572B6]" },
   javascript: { icon: SiJavascript, color: "text-[#F7DF1E]" },
+  typescript: { icon: SiTypescript, color: "text-[#3178C6]" },
   react: { icon: SiReact, color: "text-[#61DAFB]" },
+  "next.js": { icon: SiNextdotjs, color: "text-white" },
+  node: { icon: SiNodedotjs, color: "text-[#339933]" },
   tailwindcss: { icon: SiTailwindcss, color: "text-[#06B6D4]" },
   php: { icon: SiPhp, color: "text-[#777BB4]" },
   laravel: { icon: SiLaravel, color: "text-[#FF2D20]" },
   mysql: { icon: SiMysql, color: "text-[#4479A1]" },
+  postgresql: { icon: SiPostgresql, color: "text-[#4169E1]" },
+  supabase: { icon: SiSupabase, color: "text-[#3ECF8E]" },
+  vercel: { icon: SiVercel, color: "text-white" },
   figma: { icon: SiFigma, color: "text-[#F24E1E]" },
+  behance: { icon: SiBehance, color: "text-[#1769ff]" },
   github: { icon: SiGithub, color: "text-white" },
-  python: { icon: SiPython, color: "text-[#3776AB]" }
+  python: { icon: SiPython, color: "text-[#3776AB]" },
+  tensorflow: { icon: SiTensorflow, color: "text-[#FF6F00]" },
+  keras: { icon: SiKeras, color: "text-[#D00000]" },
+  jupyter: { icon: SiJupyter, color: "text-[#F37626]" },
+  "machine learning": { icon: SiOpenai, color: "text-white" },
+  "artificial intelligence": { icon: SiOpenai, color: "text-white" },
+  "teachable machine": { icon: SiOpenai, color: "text-[#4285F4]" },
 };
 
 export default function ProjectsArchiveClient({ projects = [] }) {
@@ -74,7 +90,8 @@ export default function ProjectsArchiveClient({ projects = [] }) {
                   </span>
                   <div className="flex items-center gap-3 flex-wrap">
                     {project.tech_stack && project.tech_stack.map((tech, i) => {
-                      const IconData = iconMap[tech.toLowerCase()] || iconMap.html5; // default icon if not found
+                      const lowerTech = tech.toLowerCase().trim();
+                      const IconData = iconMap[lowerTech] || { icon: FiCode, color: "text-beige-dark/50" }; 
                       const Icon = IconData.icon;
                       return (
                         <div 
