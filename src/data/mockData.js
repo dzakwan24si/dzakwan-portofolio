@@ -88,8 +88,8 @@ const EN = {
     title: "What I Can Do",
     description: "I combine technical development skills with networking knowledge to build reliable web applications and manage IT infrastructures.",
     techIcons: [
-      "html5", "css3", "javascript", "react", 
-      "tailwindcss", "php", "laravel", "mysql", 
+      "html5", "css3", "javascript", "react",
+      "tailwindcss", "php", "laravel", "mysql",
       "figma", "github", "python"
     ],
     cards: [
@@ -224,8 +224,8 @@ const ID = {
     about: "Saya adalah mahasiswa semester lima Program Studi Sistem Informasi di Politeknik Caltex Riau dengan landasan kuat di bidang pengembangan web backend dan analisis sistem. Saya mahir dalam membangun aplikasi yang tangguh menggunakan framework PHP (Laravel), React, dan MySQL. Saya memadukan kemampuan pemecahan masalah teknis dengan rekam jejak kepemimpinan dan kerja sama tim yang kuat di acara-acara organisasi skala besar, dengan tujuan untuk membangun solusi teknologi yang dapat dikembangkan secara berkelanjutan.",
     stats: [
       { label: "IPK", value: "3.73" },
-      { label: "PROYEK", value: "4+" },
-      { label: "PENGHARGAAN", value: "2" },
+      { label: "PROYEK", value: "7+" },
+      { label: "PENGHARGAAN", value: "4" },
     ],
     currently: [
       { icon: "code", title: "Membangun", subtitle: "Aplikasi Full Stack" },
@@ -299,8 +299,8 @@ const ID = {
     title: "Apa Yang Bisa Saya Lakukan",
     description: "Saya memadukan kemampuan pengembangan teknis dengan pengetahuan jaringan komputer untuk membangun aplikasi web yang andal dan mengelola infrastruktur TI.",
     techIcons: [
-      "html5", "css3", "javascript", "react", 
-      "tailwindcss", "php", "laravel", "mysql", 
+      "html5", "css3", "javascript", "react",
+      "tailwindcss", "php", "laravel", "mysql",
       "figma", "github", "python"
     ],
     cards: [
