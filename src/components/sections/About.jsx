@@ -1,10 +1,12 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { mockData } from "@/data/mockData";
 import Image from "next/image";
 import { MdVerified } from "react-icons/md";
 import { FiCode, FiActivity, FiCpu } from "react-icons/fi";
 import { useLanguage } from "@/context/LanguageContext";
+import { createClient } from "@/utils/supabase/client";
 
 const iconMap = {
   code: FiCode,
@@ -16,8 +18,37 @@ export default function About() {
   const { lang } = useLanguage();
   const currentData = mockData[lang];
   const { profile } = currentData;
+  const [counts, setCounts] = useState({ projects: null, awards: null });
+
+  useEffect(() => {
+    async function fetchCounts() {
+      const supabase = createClient();
+      try {
+        const { count: projectCount } = await supabase.from('projects').select('*', { count: 'exact', head: true });
+        const { count: awardCount } = await supabase.from('awards').select('*', { count: 'exact', head: true });
+        setCounts({ 
+          projects: projectCount !== null ? projectCount : null,
+          awards: awardCount !== null ? awardCount : null
+        });
+      } catch (error) {
+        console.error("Error fetching stats counts:", error);
+      }
+    }
+    fetchCounts();
+  }, []);
 
   if (!profile || !profile.stats) return null;
+
+  const displayStats = profile.stats.map(stat => {
+    const labelUpper = stat.label.toUpperCase();
+    if (labelUpper === 'PROJECTS' || labelUpper === 'PROYEK') {
+      return { ...stat, value: counts.projects !== null ? `${counts.projects}+` : stat.value };
+    }
+    if (labelUpper === 'AWARDS' || labelUpper === 'PENGHARGAAN') {
+      return { ...stat, value: counts.awards !== null ? counts.awards.toString() : stat.value };
+    }
+    return stat;
+  });
 
   return (
     <section className="relative py-24 px-6 md:px-12 max-w-[1200px] mx-auto w-full" id="about">
@@ -65,7 +96,7 @@ export default function About() {
 
           {/* Stats Row */}
           <div className="flex flex-wrap gap-8 md:gap-12 mb-6">
-            {profile.stats.map((stat, i) => (
+            {displayStats.map((stat, i) => (
               <div key={i} className="flex flex-col gap-1">
                 <span className="text-beige-dark text-[10px] font-bold tracking-[0.15em] uppercase">
                   {stat.label}
