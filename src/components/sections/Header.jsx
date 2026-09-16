@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { mockData } from "@/data/mockData";
 import { useLanguage } from "@/context/LanguageContext";
 
+import Image from "next/image";
+
 export default function Header() {
   const [isLight, setIsLight] = useState(false);
   const { lang, toggleLang } = useLanguage();
@@ -41,8 +43,14 @@ export default function Header() {
         
         {/* Logo */}
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-beige rounded-xl flex items-center justify-center text-navy font-display font-bold text-2xl transition-colors duration-500">
-            D
+          <div className="relative w-12 h-12 transition-all duration-500">
+            <Image 
+              src={isLight ? "/images/logolightmode.png" : "/images/logodarkmode.png"} 
+              alt="Dzakwan Logo" 
+              fill 
+              className="object-contain"
+              priority
+            />
           </div>
           <span className="font-display font-bold text-beige hidden md:block tracking-widest text-lg transition-colors duration-500">
             DZAKWAN
