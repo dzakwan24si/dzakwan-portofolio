@@ -6,6 +6,7 @@ import { mockData } from "@/data/mockData";
 import { useLanguage } from "@/context/LanguageContext";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [isLight, setIsLight] = useState(false);
@@ -42,8 +43,8 @@ export default function Header() {
       <div className="bg-card-bg/80 backdrop-blur-md border border-beige/10 rounded-full px-6 md:px-10 py-4 flex items-center justify-between shadow-2xl transition-colors duration-500">
         
         {/* Logo */}
-        <div className="flex items-center gap-4">
-          <div className="relative w-12 h-12 transition-all duration-500">
+        <Link href="/" className="flex items-center gap-4 group cursor-pointer">
+          <div className="relative w-12 h-12 transition-all duration-500 group-hover:scale-105">
             <Image 
               src={isLight ? "/images/logolightmode.png" : "/images/logodarkmode.png"} 
               alt="Dzakwan Logo" 
@@ -52,10 +53,10 @@ export default function Header() {
               priority
             />
           </div>
-          <span className="font-display font-bold text-beige hidden md:block tracking-widest text-lg transition-colors duration-500">
+          <span className="font-display font-bold text-beige hidden md:block tracking-widest text-lg transition-colors duration-500 group-hover:text-white">
             DZAKWAN
           </span>
-        </div>
+        </Link>
 
         {/* Navigation Links */}
         <nav className="hidden lg:flex items-center gap-8">

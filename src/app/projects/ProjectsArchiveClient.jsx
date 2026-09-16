@@ -2,17 +2,18 @@
 import { FiExternalLink, FiCode } from "react-icons/fi";
 import { useLanguage } from "@/context/LanguageContext";
 import { 
-  SiHtml5, SiCss3, SiJavascript, SiReact, 
+  SiHtml5, SiCss, SiJavascript, SiReact, 
   SiTailwindcss, SiPhp, SiLaravel, SiMysql, 
   SiFigma, SiGithub, SiPython, SiBehance,
-  SiTensorflow, SiKeras, SiJupyter, SiOpenai,
+  SiTensorflow, SiKeras, SiJupyter,
   SiNextdotjs, SiNodedotjs, SiVercel, SiSupabase,
   SiPostgresql, SiTypescript
 } from "react-icons/si";
+import { FaRobot } from "react-icons/fa";
 
 const iconMap = {
   html5: { icon: SiHtml5, color: "text-[#E34F26]" },
-  css3: { icon: SiCss3, color: "text-[#1572B6]" },
+  css3: { icon: SiCss, color: "text-[#1572B6]" },
   javascript: { icon: SiJavascript, color: "text-[#F7DF1E]" },
   typescript: { icon: SiTypescript, color: "text-[#3178C6]" },
   react: { icon: SiReact, color: "text-[#61DAFB]" },
@@ -32,9 +33,9 @@ const iconMap = {
   tensorflow: { icon: SiTensorflow, color: "text-[#FF6F00]" },
   keras: { icon: SiKeras, color: "text-[#D00000]" },
   jupyter: { icon: SiJupyter, color: "text-[#F37626]" },
-  "machine learning": { icon: SiOpenai, color: "text-white" },
-  "artificial intelligence": { icon: SiOpenai, color: "text-white" },
-  "teachable machine": { icon: SiOpenai, color: "text-[#4285F4]" },
+  "machine learning": { icon: FaRobot, color: "text-white" },
+  "artificial intelligence": { icon: FaRobot, color: "text-white" },
+  "teachable machine": { icon: FaRobot, color: "text-[#4285F4]" },
 };
 
 export default function ProjectsArchiveClient({ projects = [] }) {

@@ -88,9 +88,9 @@ const EN = {
     title: "What I Can Do",
     description: "I combine technical development skills with networking knowledge to build reliable web applications and manage IT infrastructures.",
     techIcons: [
-      "html5", "css3", "javascript", "react",
-      "tailwindcss", "php", "laravel", "mysql",
-      "figma", "github", "python"
+      "html5", "css3", "javascript", "typescript", "react", "next.js",
+      "tailwindcss", "php", "laravel", "mysql", "postgresql", "supabase",
+      "python", "machine learning", "figma", "behance", "github", "vercel"
     ],
     cards: [
       {
@@ -299,9 +299,9 @@ const ID = {
     title: "Apa Yang Bisa Saya Lakukan",
     description: "Saya memadukan kemampuan pengembangan teknis dengan pengetahuan jaringan komputer untuk membangun aplikasi web yang andal dan mengelola infrastruktur TI.",
     techIcons: [
-      "html5", "css3", "javascript", "react",
-      "tailwindcss", "php", "laravel", "mysql",
-      "figma", "github", "python"
+      "html5", "css3", "javascript", "typescript", "react", "next.js",
+      "tailwindcss", "php", "laravel", "mysql", "postgresql", "supabase",
+      "python", "machine learning", "figma", "behance", "github", "vercel"
     ],
     cards: [
       {

@@ -5,21 +5,39 @@ import { useLanguage } from "@/context/LanguageContext";
 import { 
   SiHtml5, SiCss, SiJavascript, SiReact, 
   SiTailwindcss, SiPhp, SiLaravel, SiMysql, 
-  SiFigma, SiGithub 
+  SiFigma, SiGithub, SiPython, SiBehance,
+  SiTensorflow, SiKeras, SiJupyter,
+  SiNextdotjs, SiNodedotjs, SiVercel, SiSupabase,
+  SiPostgresql, SiTypescript
 } from "react-icons/si";
 import { FiCode, FiLayout } from "react-icons/fi";
+import { FaRobot } from "react-icons/fa";
 
 const iconMap = {
   html5: { icon: SiHtml5, color: "text-[#E34F26]" },
   css3: { icon: SiCss, color: "text-[#1572B6]" },
   javascript: { icon: SiJavascript, color: "text-[#F7DF1E]" },
+  typescript: { icon: SiTypescript, color: "text-[#3178C6]" },
   react: { icon: SiReact, color: "text-[#61DAFB]" },
+  "next.js": { icon: SiNextdotjs, color: "text-[#000000]" },
+  node: { icon: SiNodedotjs, color: "text-[#339933]" },
   tailwindcss: { icon: SiTailwindcss, color: "text-[#06B6D4]" },
   php: { icon: SiPhp, color: "text-[#777BB4]" },
   laravel: { icon: SiLaravel, color: "text-[#FF2D20]" },
   mysql: { icon: SiMysql, color: "text-[#4479A1]" },
+  postgresql: { icon: SiPostgresql, color: "text-[#4169E1]" },
+  supabase: { icon: SiSupabase, color: "text-[#3ECF8E]" },
+  vercel: { icon: SiVercel, color: "text-[#000000]" },
   figma: { icon: SiFigma, color: "text-[#F24E1E]" },
-  github: { icon: SiGithub, color: "text-white" },
+  behance: { icon: SiBehance, color: "text-[#1769ff]" },
+  github: { icon: SiGithub, color: "text-navy" },
+  python: { icon: SiPython, color: "text-[#3776AB]" },
+  tensorflow: { icon: SiTensorflow, color: "text-[#FF6F00]" },
+  keras: { icon: SiKeras, color: "text-[#D00000]" },
+  jupyter: { icon: SiJupyter, color: "text-[#F37626]" },
+  "machine learning": { icon: FaRobot, color: "text-[#10a37f]" },
+  "artificial intelligence": { icon: FaRobot, color: "text-[#10a37f]" },
+  "teachable machine": { icon: FaRobot, color: "text-[#4285F4]" },
 };
 
 export default function Skills() {
